@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Controle de Laboratório</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="dashboard">
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <main class="main">
+      <div class="topo-pagina">
+        <div>
+          <h2>Dashboard</h2>
+          <p>Visão geral do laboratório em tempo real.</p>
+        </div>
+      </div>
+
+      <div class="cards-stats">
+        <div class="card-stat">
+          <div class="num" id="statMonitores">0</div>
+          <div class="label">Monitores cadastrados</div>
+        </div>
+        <div class="card-stat">
+          <div class="num" id="statUsuarios">0</div>
+          <div class="label">Alunos cadastrados</div>
+        </div>
+        <div class="card-stat">
+          <div class="num" id="statMaquinas">0</div>
+          <div class="label">Máquinas cadastradas</div>
+        </div>
+        <div class="card-stat verde">
+          <div class="num" id="statAtivos">0</div>
+          <div class="label">Acessos ativos agora</div>
+        </div>
+      </div>
+
+      <div class="painel">
+        <h3>Acessos ativos agora</h3>
+        <div class="tabela-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Aluno</th>
+                <th>Turma</th>
+                <th>Máquina</th>
+                <th>Data</th>
+                <th>Entrada</th>
+                <th>Tempo decorrido</th>
+              </tr>
+            </thead>
+            <tbody id="corpoAtivos"></tbody>
+          </table>
+          <div id="vazioAtivos" class="tabela-vazia" style="display:none;">Nenhum acesso ativo no momento.</div>
+        </div>
+      </div>
+
+      <div class="painel">
+        <h3>Situação das máquinas</h3>
+        <div class="tabela-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Máquina</th>
+                <th>Localização</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="corpoMaquinas"></tbody>
+          </table>
+          <div id="vazioMaquinas" class="tabela-vazia" style="display:none;">Nenhuma máquina cadastrada ainda.</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/db.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

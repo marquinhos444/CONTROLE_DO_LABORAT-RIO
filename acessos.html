@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACESSOS - Controle de Laboratório</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="acessos">
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <main class="main">
+      <div class="topo-pagina">
+        <div>
+          <h2>REGISTROS DE ACESSOS</h2>
+          <p>CONTROLE ACESSO POR DIA, HORÁRIO, ALUNO E MÁQUINA.</p>
+        </div>
+      </div>
+
+      <div class="painel">
+        <h3>Iniciar novo acesso</h3>
+        <form id="formAcesso">
+          <div class="grid-form">
+            <div class="campo">
+              <label for="selectAluno">Aluno</label>
+              <select id="selectAluno" required>
+                <option value="">Selecione o aluno</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="selectMaquina">Máquina</label>
+              <select id="selectMaquina" required>
+                <option value="">Selecione a máquina</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label for="inputData">Data</label>
+              <input type="date" id="inputData" required>
+            </div>
+            <div class="campo">
+              <label for="inputHora">Horário de entrada</label>
+              <input type="time" id="inputHora" required>
+            </div>
+          </div>
+          <div class="acoes-form">
+            <button type="submit" class="btn btn-primary">Iniciar acesso</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="painel">
+        <h3>Acessos ativos</h3>
+        <div class="tabela-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Aluno</th>
+                <th>Turma</th>
+                <th>Máquina</th>
+                <th>Data</th>
+                <th>Entrada</th>
+                <th>Tempo decorrido</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="corpoAtivos"></tbody>
+          </table>
+          <div id="vazioAtivos" class="tabela-vazia" style="display:none;">Nenhum acesso ativo no momento.</div>
+        </div>
+      </div>
+
+      <div class="painel">
+        <h3>Histórico recente</h3>
+        <div class="tabela-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Aluno</th>
+                <th>Turma</th>
+                <th>Máquina</th>
+                <th>Data</th>
+                <th>Entrada</th>
+                <th>Saída</th>
+                <th>Duração</th>
+              </tr>
+            </thead>
+            <tbody id="corpoHistorico"></tbody>
+          </table>
+          <div id="vazioHistorico" class="tabela-vazia" style="display:none;">Nenhum acesso encerrado ainda.</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/db.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/acessos.js"></script>
+</body>
+</html>

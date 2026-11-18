@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Usuários - Controle de Laboratório</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="usuarios">
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <main class="main">
+      <div class="topo-pagina">
+        <div>
+          <h2>Usuários / Alunos</h2>
+          <p>CADASTRE OS ESTUDANTES PELO E-MAIL INSTITUCIONAL, NOME E TURMA.</p>
+        </div>
+      </div>
+
+      <div class="painel">
+        <h3 id="tituloForm">NOVO USUÁRIO</h3>
+        <form id="formUsuario">
+          <input type="hidden" id="usuarioId">
+          <div class="grid-form">
+            <div class="campo">
+              <label for="nome">NOME DO ESTUDANTE</label>
+              <input type="text" id="nome" required placeholder="Ex: João Pereira">
+            </div>
+            <div class="campo">
+              <label for="email">E-MAIL INSTITUCIONAL</label>
+              <input type="email" id="email" required placeholder="aluno@instituicao.edu.br">
+            </div>
+            <div class="campo">
+              <label for="turma">TURMA</label>
+              <input type="text" id="turma" required placeholder="Ex: 3º A - Informática">
+            </div>
+          </div>
+          <div class="acoes-form">
+            <button type="submit" class="btn btn-primary" id="btnSalvar">CADASTRAR USUÁRIO</button>
+            <button type="button" class="btn btn-secondary" id="btnCancelar" style="display:none;">CANCELAR EDIÇÃO</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="painel">
+        <h3>USUÁRIOS CADASTRADOS</h3>
+        <div class="campo" style="max-width:300px; margin-bottom:14px;">
+          <label for="busca">BUSCAR NOME E TURMA</label>
+          <input type="text" id="busca" placeholder="Digite para filtrar...">
+        </div>
+        <div class="tabela-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>E-mail Institucional</th>
+                <th>Turma</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="corpoTabela"></tbody>
+          </table>
+          <div id="tabelaVazia" class="tabela-vazia" style="display:none;">NENHUM USUÁRIO CADASTRADO AINDA.</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/db.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/usuarios.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RELATÓRIO - Controle de Laboratório</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="relatorios">
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <main class="main">
+      <div class="topo-pagina">
+        <div>
+          <h2>Relatórios de Acessos</h2>
+          <p>Filtre por período, aluno, turma, máquina e status.</p>
+        </div>
+      </div>
+
+      <div class="painel">
+        <h3>Filtros</h3>
+        <form id="formFiltro">
+          <div class="filtros-grid">
+            <div class="campo">
+              <label for="filtroDataIni">Data inicial</label>
+              <input type="date" id="filtroDataIni">
+            </div>
+            <div class="campo">
+              <label for="filtroDataFim">Data final</label>
+              <input type="date" id="filtroDataFim">
+            </div>
+            <div class="campo">
+              <label for="filtroAluno">Aluno</label>
+              <select id="filtroAluno"><option value="">Todos</option></select>
+            </div>
+            <div class="campo">
+              <label for="filtroTurma">Turma</label>
+              <select id="filtroTurma"><option value="">Todas</option></select>
+            </div>
+            <div class="campo">
+              <label for="filtroMaquina">Máquina</label>
+              <select id="filtroMaquina"><option value="">Todas</option></select>
+            </div>
+            <div class="campo">
+              <label for="filtroStatus">Status</label>
+              <select id="filtroStatus">
+                <option value="">Todos</option>
+                <option value="ativo">Ativo</option>
+                <option value="encerrado">Encerrado</option>
+              </select>
+            </div>
+          </div>
+          <div class="acoes-form">
+            <button type="submit" class="btn btn-primary">Gerar relatório</button>
+            <button type="button" class="btn btn-secondary" id="btnLimparFiltros">Limpar filtros</button>
+            <button type="button" class="btn btn-success" id="btnExportar">Exportar CSV</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="resumo-relatorio">
+        <div class="card-stat">
+          <div class="num" id="resTotal">0</div>
+          <div class="label">Total de acessos encontrados</div>
+        </div>
+        <div class="card-stat verde">
+          <div class="num" id="resAtivos">0</div>
+          <div class="label">Acessos ativos no filtro</div>
+        </div>
+        <div class="card-stat amarelo">
+          <div class="num" id="resTempoMedio">0h 00min</div>
+          <div class="label">Tempo médio de uso (encerrados)</div>
+        </div>
+      </div>
+
+      <div class="painel">
+        <h3>Resultado</h3>
+        <div class="tabela-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Aluno</th>
+                <th>Turma</th>
+                <th>Máquina</th>
+                <th>Data</th>
+                <th>Entrada</th>
+                <th>Saída</th>
+                <th>Duração</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="corpoRelatorio"></tbody>
+          </table>
+          <div id="vazioRelatorio" class="tabela-vazia" style="display:none;">Nenhum acesso encontrado para os filtros selecionados.</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/db.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/relatorios.js"></script>
+</body>
+</html>

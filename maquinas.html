@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MÁQUINAS - CONTROLE DE LABORATÓRIO</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="maquinas">
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <main class="main">
+      <div class="topo-pagina">
+        <div>
+          <h2>MÁQUINAS DO LABORATÓRIO</h2>
+          <p>CADASTRE OS COMPUTADORES DISPONÍVEIS E CONTROLE A MANUTENÇÃO.</p>
+        </div>
+      </div>
+
+      <div class="painel">
+        <h3 id="tituloForm">NOVA MÁQUINA</h3>
+        <form id="formMaquina">
+          <input type="hidden" id="maquinaId">
+          <div class="grid-form">
+            <div class="campo">
+              <label for="nome">Identificação</label>
+              <input type="text" id="nome" required placeholder="Ex: PC-01">
+            </div>
+            <div class="campo">
+              <label for="localizacao">Localização / Sala</label>
+              <input type="text" id="localizacao" placeholder="Ex: Laboratório 2 - Bancada A">
+            </div>
+            <div class="campo">
+              <label for="patrimonio">Patrimônio (opcional)</label>
+              <input type="text" id="patrimonio" placeholder="Ex: PAT-4521">
+            </div>
+            <div class="campo">
+              <label for="statusManual">Status</label>
+              <select id="statusManual">
+                <option value="disponivel">Disponível</option>
+                <option value="manutencao">Em manutenção</option>
+              </select>
+              <small>O status "Em uso" é calculado automaticamente pelos acessos ativos.</small>
+            </div>
+          </div>
+          <div class="acoes-form">
+            <button type="submit" class="btn btn-primary" id="btnSalvar">Cadastrar máquina</button>
+            <button type="button" class="btn btn-secondary" id="btnCancelar" style="display:none;">Cancelar edição</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="painel">
+        <h3>Máquinas cadastradas</h3>
+        <div class="tabela-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Identificação</th>
+                <th>Localização</th>
+                <th>Patrimônio</th>
+                <th>Status</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="corpoTabela"></tbody>
+          </table>
+          <div id="tabelaVazia" class="tabela-vazia" style="display:none;">NENHUMA MÁQUINA CADASTRADA AINDA.</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/db.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/maquinas.js"></script>
+</body>
+</html>
