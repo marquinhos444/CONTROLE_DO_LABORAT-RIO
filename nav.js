@@ -1,6 +1,6 @@
 
 const ITENS_MENU = [
-  { chave: "dashboard", href: "dashboard.html", texto: "Dashboard" },
+  { chave: "dashboard", href: "index.html", texto: "Dashboard" },
   { chave: "monitores", href: "monitores.html", texto: "Monitores" },
   { chave: "usuarios", href: "usuarios.html", texto: "Usuários / Alunos" },
   { chave: "maquinas", href: "maquinas.html", texto: "Máquinas" },
