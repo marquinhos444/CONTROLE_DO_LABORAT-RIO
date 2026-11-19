@@ -1,5 +1,5 @@
 :root {
-  --azul-escuro: #d10000;
+  --azul-escuro: #0015d1;
   --azul-principal: #1565c0;
   --azul-medio: #1976d2;  
   --azul-claro: #64b5f6;
@@ -115,7 +115,7 @@ a {
   gap: 8px;
   padding: 0 22px 22px;
   margin: -22px 0 14px 0;
-  background: #c62828;
+  background: var(--vermelho); 
   margin-bottom: 14px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
