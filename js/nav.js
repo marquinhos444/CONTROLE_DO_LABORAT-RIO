@@ -4,31 +4,55 @@ const ITENS_MENU = [
   { chave: "usuarios", href: "usuarios.html", texto: "Usuários / Alunos" },
   { chave: "maquinas", href: "maquinas.html", texto: "Máquinas" },
   { chave: "acessos", href: "acessos.html", texto: "Acessos" },
-  { chave: "relatorios", href: "relatorios.html", texto: "Relatórios" },
+  { chave: "relatorios", href: "relatorios.html", texto: "Relatórios" }
 ];
 
 function montarSidebar() {
   const paginaAtual = document.body.dataset.page || "";
   const host = document.getElementById("sidebar");
-  if (!host) return;
 
-  const links = ITENS_MENU.map(
-    (item) => `
-      <a href="${item.href}" class="${item.chave === paginaAtual ? "active" : ""}">
-        <span class="ic">${item.icone}</span>
-        <span>${item.texto}</span>
-      </a>`
-  ).join("");
+  if (!host) {
+    console.error("Elemento #sidebar não encontrado.");
+    return;
+  }
 
-  host.innerHTML = `
-
-        <h1>Controle de Laboratório</h1>
-        <span>Gestão de acessos e monitoria</span>
-      </div>
-    </div>
-    <nav>${links}</nav>
-    <div class="rodape">Versão local &middot; sem banco de dados<br>Dados salvos neste navegador</div>
+  const logo = document.createElement("div");
+  logo.className = "logo";
+  logo.innerHTML = `
+    <h1>Controle de Laboratório</h1>
+    <span>Gestão de acessos e monitoria</span>
   `;
+
+  const nav = document.createElement("nav");
+  nav.setAttribute("aria-label", "Menu principal");
+
+  ITENS_MENU.forEach((item) => {
+    const link = document.createElement("a");
+
+    link.href = item.href;
+    link.textContent = item.texto;
+
+    if (item.chave === paginaAtual) {
+      link.classList.add("active");
+      link.setAttribute("aria-current", "page");
+    }
+
+    nav.appendChild(link);
+  });
+
+  const rodape = document.createElement("div");
+  rodape.className = "rodape";
+  rodape.innerHTML = `
+    Versão local &middot; sem banco de dados<br>
+    Dados salvos neste navegador
+  `;
+
+  host.innerHTML = "";
+  host.append(logo, nav, rodape);
 }
 
-document.addEventListener("DOMContentLoaded", montarSidebar);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", montarSidebar);
+} else {
+  montarSidebar();
+}
