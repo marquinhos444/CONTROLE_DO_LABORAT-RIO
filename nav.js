@@ -32,23 +32,36 @@ const ITENS_MENU = [
 ];
 
 function montarSidebar() {
+
   const paginaAtual = document.body.dataset.page || "";
+
   const host = document.getElementById("sidebar");
 
   if (!host) {
-    console.error("Elemento sidebar não encontrado.");
+    console.error("Elemento #sidebar não encontrado no HTML.");
     return;
   }
 
   const links = ITENS_MENU.map((item) => {
+
     const classeAtiva =
       item.chave === paginaAtual ? "active" : "";
 
+    const paginaAtiva =
+      item.chave === paginaAtual
+        ? 'aria-current="page"'
+        : "";
+
     return `
-      <a href="${item.href}" class="${classeAtiva}">
+      <a
+        href="${item.href}"
+        class="${classeAtiva}"
+        ${paginaAtiva}
+      >
         <span>${item.texto}</span>
       </a>
     `;
+
   }).join("");
 
   host.innerHTML = `
@@ -57,7 +70,7 @@ function montarSidebar() {
       <span>Gestão de acessos e monitoria</span>
     </div>
 
-    <nav>
+    <nav aria-label="Menu principal">
       ${links}
     </nav>
 
@@ -68,4 +81,8 @@ function montarSidebar() {
   `;
 }
 
-document.addEventListener("DOMContentLoaded", montarSidebar);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", montarSidebar);
+} else {
+  montarSidebar();
+}
