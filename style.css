@@ -1,7 +1,7 @@
 :root {
   --azul-escuro: #d10000;
   --azul-principal: #1565c0;
-  --azul-medio: #1976d2;
+  --azul-medio: #1976d2;  
   --azul-claro: #64b5f6;
   --azul-fundo: #e3f2fd;
 
@@ -113,10 +113,10 @@ a {
   display: flex;
   flex-direction: column;
   gap: 8px;
-
   padding: 0 22px 22px;
+  margin: -22px 0 14px 0;
+  background: #c62828;
   margin-bottom: 14px;
-
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
